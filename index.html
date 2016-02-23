@@ -11,29 +11,24 @@
 <script type="text/javascript">
 var destinationType;
 
-//$("document").ready(function inicio(){
-document.addEventListener("diviceready", onDeviceRealy, false);
-function onDeviceReady(){
-$("#btncamara").tap(function pulsacion(){
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+     $("#btnCamara").tap(function pulsacion(){
+    
     navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.FILE_URI });
 
-function onSuccess(imageURI) {
-    var image = document.getElementById('myImage');
-    //seleccionar control con javascript
-    var image=document.getElementById("myImage");
-
+    function onSuccess(imageURI) {
+    var image = document.getElementById("myImage");//Seleccionar control con javascript
     image.src = imageURI;
+    }
+
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }            
+   });
 }
-
-function onFail(message) {
-    alert('Failed because: ' + message);
-}
-});   
-}
-
-
-
 </script>
 <style type="text/css">
 #encabezado{
@@ -53,18 +48,15 @@ font-weight:bold;
 <body>
 <div data-role="page" id="principal">
 	<div data-role="header">
-		<h1>Camara</h1>
+		<h1>Mi aplicación</h1>
 	</div>
 	<div data-role="content">
-	<input type="button" value="Acceder camara" id="btnCamara"/>
-        <img src=" " id="myImage">
-
-
-</div>
+		<input type="button" value="Acceder a camara" id="btnCamara" />
+                <img src="" id="myImage"  width="20" />
+  	</div>
 	<div data-role="footer">
-		
-</div>
-
+     	
+	</div>
 </div>
 </body>
 </html>
